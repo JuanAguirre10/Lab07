@@ -13,6 +13,8 @@ Proyecto desarrollado para el curso de Desarrollo de Aplicaciones Web que implem
 - JDK 24
 
 ## Estructura del Proyecto
+
+```
 Lab07/
 ├── src/main/java/com/tecsup/lab07/
 │   ├── config/
@@ -27,19 +29,22 @@ Lab07/
 │       ├── CategoriaServlet.java
 │       └── ProductoServlet.java
 └── src/main/webapp/
-├── ejemplo01.jsp
-├── ejemplo02.jsp
-├── ejemplo03.jsp
-├── index.jsp
-└── views/
-├── categorias/
-│   ├── listar.jsp
-│   └── form.jsp
-└── productos/
-├── listar.jsp
-└── form.jsp
+    ├── ejemplo01.jsp
+    ├── ejemplo02.jsp
+    ├── ejemplo03.jsp
+    ├── index.jsp
+    └── views/
+        ├── categorias/
+        │   ├── listar.jsp
+        │   └── form.jsp
+        └── productos/
+            ├── listar.jsp
+            └── form.jsp
+```
 
 ## Configuración de Base de Datos
+
+Ejecutar el siguiente script en MySQL:
 
 CREATE DATABASE lab07_db;
 
@@ -75,57 +80,74 @@ INSERT INTO producto (nombre, precio, stock, categoria_id) VALUES
 ('Aceite 1L', 12.00, 80, 3),
 ('Almohada', 35.00, 40, 4),
 ('Sábanas', 65.00, 20, 4);
-Configuración de Conexión
-Modificar los datos de conexión en ConexionDB.java si es necesario:
-javaprivate static final String URL = "jdbc:mysql://localhost:3307/lab07_db";
+```
+
+## Configuración de Conexión
+
+Modificar los datos de conexión en `ConexionDB.java` si es necesario:
+
+```java
+private static final String URL = "jdbc:mysql://localhost:3307/lab07_db";
 private static final String USER = "root";
 private static final String PASSWORD = "";
-Instalación y Ejecución
+```
 
-Clonar el repositorio
-Importar el proyecto en IntelliJ IDEA como proyecto Maven
-Configurar Tomcat 10.1.44 en IntelliJ
-Ejecutar el script SQL en MySQL
-Ajustar el puerto de Tomcat a 8081 si el 8080 está ocupado
-Ejecutar el proyecto
+## Instalación y Ejecución
 
-Funcionalidades
-Ejemplos JSTL
+1. Clonar el repositorio
+2. Importar el proyecto en IntelliJ IDEA como proyecto Maven
+3. Configurar Tomcat 10.1.44 en IntelliJ
+4. Ejecutar el script SQL en MySQL
+5. Ajustar el puerto de Tomcat a 8081 si el 8080 está ocupado
+6. Ejecutar el proyecto
 
-Calculadora con operaciones básicas
-Listado de cursos con forEach
-Manipulación de strings con funciones JSTL
+## Funcionalidades
 
-CRUD Categorías
+### Ejemplos JSTL
+- Calculadora con operaciones básicas
+- Listado de cursos con forEach
+- Manipulación de strings con funciones JSTL
 
-Listar todas las categorías
-Crear nueva categoría
-Editar categoría existente
-Eliminar categoría
+### CRUD Categorías
+- Listar todas las categorías
+- Crear nueva categoría
+- Editar categoría existente
+- Eliminar categoría
 
-CRUD Productos
+### CRUD Productos
+- Listar productos con información de categoría
+- Crear nuevo producto
+- Editar producto existente
+- Eliminar producto
 
-Listar productos con información de categoría
-Crear nuevo producto
-Editar producto existente
-Eliminar producto
+## Endpoints
 
-Endpoints
+- `/` - Página principal
+- `/ejemplo01.jsp` - Calculadora JSTL
+- `/ejemplo02.jsp` - Listado de cursos
+- `/ejemplo03.jsp` - Manipulación de strings
+- `/categorias` - Gestión de categorías
+- `/productos` - Gestión de productos
 
-/ - Página principal
-/ejemplo01.jsp - Calculadora JSTL
-/ejemplo02.jsp - Listado de cursos
-/ejemplo03.jsp - Manipulación de strings
-/categorias - Gestión de categorías
-/productos - Gestión de productos
+## Patrón de Diseño
 
-Patrón de Diseño
 El proyecto implementa el patrón MVC:
+- Model: Clases POJO para representar entidades
+- View: JSP con JSTL sin scriptlets
+- Controller: Servlets que procesan peticiones HTTP
 
-Model: Clases POJO para representar entidades
-View: JSP con JSTL sin scriptlets
-Controller: Servlets que procesan peticiones HTTP
+## Conclusiones
 
-Autor
+1. JSTL elimina la necesidad de usar scriptlets en JSP, lo que hace el código más limpio y fácil de mantener.
+
+2. La arquitectura MVC separa correctamente la lógica de negocio de la presentación, facilitando el desarrollo y debugging.
+
+3. El patrón DAO centraliza el acceso a la base de datos y permite reutilizar código sin duplicarlo en cada servlet.
+
+4. Las etiquetas de JSTL como c:forEach y c:choose son más intuitivas que escribir bucles y condicionales en Java dentro del JSP.
+
+5. Integrar Jakarta EE con MySQL mediante JDBC es directo, pero requiere manejar correctamente las excepciones y cerrar las conexiones.
+
+## Autor
 Juan Aguirre Saavedra
 Desarrollo de Aplicaciones Web - Sección A
